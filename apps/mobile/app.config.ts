@@ -1,0 +1,41 @@
+import type { ExpoConfig } from "@expo/config";
+
+type CustomExpoConfig = ExpoConfig & {
+  extra: {
+    clerkPublishableKey: string;
+  };
+};
+
+const defineConfig = (): CustomExpoConfig => ({
+  name: "mobile",
+  slug: "mobile",
+  scheme: "repo",
+  version: "1.0.0",
+  orientation: "portrait",
+  icon: "./assets/icon.png",
+  userInterfaceStyle: "light",
+  splash: {
+    image: "./assets/splash.png",
+    resizeMode: "contain",
+    backgroundColor: "#ffffff",
+  },
+  assetBundlePatterns: ["**/*"],
+  ios: {
+    supportsTablet: true,
+  },
+  android: {
+    adaptiveIcon: {
+      foregroundImage: "./assets/adaptive-icon.png",
+      backgroundColor: "#ffffff",
+    },
+  },
+  web: {
+    favicon: "./assets/favicon.png",
+  },
+  plugins: ["expo-router"],
+  extra: {
+    clerkPublishableKey: "your-clerk-publishable-key",
+  },
+});
+
+export default defineConfig;
